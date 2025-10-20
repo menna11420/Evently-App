@@ -99,6 +99,7 @@ class _HomeTabState extends State<HomeTab> {
           ),
         ),
         Expanded(child: ListView.builder(
+          padding: EdgeInsets.zero,
           itemBuilder: (context,index) => CustomEventItem(
             event: EventModel(
                 category: CategoryModel.categories[2],
