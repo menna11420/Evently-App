@@ -47,11 +47,13 @@ class CustomDropDownItem extends StatelessWidget {
                 ),
                 Spacer(),
                 DropdownButton(
+                  dropdownColor: ColorsManager.whiteBlue,
+
                   underline: Container(),
                   items: menuItems
                       .map(
                         (item) =>
-                        DropdownMenuItem(value: item, child: Text(item)),
+                        DropdownMenuItem(value: item, child: Text(item,style: GoogleFonts.inter(color: ColorsManager.black1C,fontSize: 14.sp,fontWeight: FontWeight.w400),)),
                   )
                       .toList(),
                   onChanged: (_) {},

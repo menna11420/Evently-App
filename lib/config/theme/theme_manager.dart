@@ -6,6 +6,9 @@ import 'package:google_fonts/google_fonts.dart';
 class ThemeManager {
   static final ThemeData light = ThemeData(
     useMaterial3: false,
+    iconTheme: IconThemeData(
+        color: ColorsManager.black1C
+    ),
     primaryColor: ColorsManager.blue,
     appBarTheme: AppBarThemeData(
       backgroundColor: ColorsManager.whiteBlue,
@@ -19,13 +22,6 @@ class ThemeManager {
       ),
       color: ColorsManager.whiteBlue,
       elevation: 8
-    ),
-    colorScheme: ColorScheme.fromSeed(
-      seedColor: ColorsManager.blue,
-      primary: ColorsManager.whiteBlue,
-      onPrimary: ColorsManager.blue,
-      secondary: Colors.transparent,
-      onSecondary: ColorsManager.whiteBlue,
     ),
     bottomAppBarTheme: BottomAppBarThemeData(
       color: ColorsManager.blue,
@@ -95,6 +91,13 @@ class ThemeManager {
         ),
       ),
     ),
+    outlinedButtonTheme: OutlinedButtonThemeData(
+      style: OutlinedButton.styleFrom(
+        padding: REdgeInsets.symmetric(vertical: 16),
+        side: BorderSide(color: ColorsManager.blue, width: 1.w),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
+      ),
+    ),
     textTheme: TextTheme(
       headlineLarge: GoogleFonts.inter(
         fontSize: 24.sp,
@@ -131,26 +134,28 @@ class ThemeManager {
         color: ColorsManager.black1C,
       ),
     ),
-    outlinedButtonTheme: OutlinedButtonThemeData(
-      style: OutlinedButton.styleFrom(
-        padding: REdgeInsets.symmetric(vertical: 16),
-        side: BorderSide(color: ColorsManager.blue, width: 1.w),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
-      ),
-    ),
   );
   static final ThemeData dark = ThemeData(
     useMaterial3: false,
+    iconTheme: IconThemeData(
+      color: ColorsManager.ofWhite
+    ),
     primaryColor: ColorsManager.darkBlue,
-    colorScheme: ColorScheme.fromSeed(
-      seedColor: ColorsManager.darkBlue,
-      primary: ColorsManager.blue,
-      onPrimary: ColorsManager.whiteBlue,
-      secondary: Colors.transparent,
-      onSecondary: ColorsManager.whiteBlue,
+    appBarTheme: AppBarThemeData(
+      backgroundColor: ColorsManager.darkBlue,
+      foregroundColor: ColorsManager.blue,
+      titleTextStyle: GoogleFonts.roboto(fontSize: 18.sp,fontWeight: FontWeight.w400,color: ColorsManager.blue),
+      centerTitle: true,
+    ),
+    cardTheme: CardThemeData(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8.r)
+        ),
+        color: ColorsManager.darkBlue,
+        elevation: 8
     ),
     bottomAppBarTheme: BottomAppBarThemeData(
-      color: ColorsManager.blue,
+      color: ColorsManager.darkBlue,
       elevation: 16,
       shape: CircularNotchedRectangle(),
     ),
@@ -158,28 +163,28 @@ class ThemeManager {
       backgroundColor: Colors.transparent,
       elevation: 0,
       type: BottomNavigationBarType.fixed,
-      selectedItemColor: ColorsManager.white,
-      unselectedItemColor: ColorsManager.white,
+      selectedItemColor: ColorsManager.ofWhite,
+      unselectedItemColor: ColorsManager.ofWhite,
     ),
     floatingActionButtonTheme: FloatingActionButtonThemeData(
-      backgroundColor: ColorsManager.blue,
-      foregroundColor: ColorsManager.white,
+      backgroundColor: ColorsManager.darkBlue,
+      foregroundColor: ColorsManager.ofWhite,
       shape: StadiumBorder(
           side: BorderSide(
-            color: ColorsManager.white,
+            color: ColorsManager.ofWhite,
             width: 4.w,
           )
       ),
     ),
-    scaffoldBackgroundColor: ColorsManager.whiteBlue,
+    scaffoldBackgroundColor: ColorsManager.darkBlue,
     inputDecorationTheme: InputDecorationTheme(
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(14.r),
-        borderSide: BorderSide(color: ColorsManager.gray, width: 1.w),
+        borderSide: BorderSide(color: ColorsManager.blue, width: 1.w),
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(14.r),
-        borderSide: BorderSide(color: ColorsManager.gray, width: 1.w),
+        borderSide: BorderSide(color: ColorsManager.blue, width: 1.w),
       ),
       errorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(14.r),
@@ -189,10 +194,15 @@ class ThemeManager {
         borderRadius: BorderRadius.circular(14.r),
         borderSide: BorderSide(color: ColorsManager.red, width: 1.w),
       ),
-      prefixIconColor: ColorsManager.gray,
-      suffixIconColor: ColorsManager.gray,
+      prefixIconColor: ColorsManager.ofWhite,
+      suffixIconColor: ColorsManager.ofWhite,
       labelStyle: GoogleFonts.inter(
-        color: ColorsManager.gray,
+        color: ColorsManager.ofWhite,
+        fontSize: 16.sp,
+        fontWeight: FontWeight.w500,
+      ),
+      hintStyle: GoogleFonts.inter(
+        color: ColorsManager.ofWhite,
         fontSize: 16.sp,
         fontWeight: FontWeight.w500,
       ),
@@ -212,6 +222,13 @@ class ThemeManager {
         ),
       ),
     ),
+    outlinedButtonTheme: OutlinedButtonThemeData(
+      style: OutlinedButton.styleFrom(
+        padding: REdgeInsets.symmetric(vertical: 16),
+        side: BorderSide(color: ColorsManager.blue, width: 1.w),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
+      ),
+    ),
     textTheme: TextTheme(
       headlineLarge: GoogleFonts.inter(
         fontSize: 24.sp,
@@ -228,16 +245,24 @@ class ThemeManager {
           fontWeight: FontWeight.w400,
           color: ColorsManager.white),
       bodySmall: GoogleFonts.inter(
-        color: ColorsManager.black1C,
+        color: ColorsManager.ofWhite,
         fontSize: 16.sp,
         fontWeight: FontWeight.w500,
       ),
-    ),
-    outlinedButtonTheme: OutlinedButtonThemeData(
-      style: OutlinedButton.styleFrom(
-        padding: REdgeInsets.symmetric(vertical: 16),
-        side: BorderSide(color: ColorsManager.blue, width: 1.w),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
+      titleSmall: GoogleFonts.inter(
+          color: ColorsManager.ofWhite,
+          fontSize: 14.sp,
+          fontWeight: FontWeight.bold),
+
+      titleMedium: GoogleFonts.inter(
+          color: ColorsManager.ofWhite,
+          fontSize: 16.sp,
+          fontWeight: FontWeight.w500),
+
+      labelMedium: GoogleFonts.inter(
+        fontSize: 20.sp,
+        fontWeight: FontWeight.bold,
+        color: ColorsManager.ofWhite,
       ),
     ),
   );

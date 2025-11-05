@@ -33,7 +33,7 @@ class CustomTextFormField extends StatelessWidget {
       controller: controller,
       validator: validator,
       obscureText: isSecure,
-      style: GoogleFonts.inter(color: ColorsManager.black1C,fontSize: 16.sp,fontWeight:FontWeight.w400),
+      style: Theme.of(context).textTheme.bodySmall,
       cursorColor: ColorsManager.gray,
       keyboardType: keyboardType,
       decoration: InputDecoration(

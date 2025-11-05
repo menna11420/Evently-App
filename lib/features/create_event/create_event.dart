@@ -64,7 +64,7 @@ class _CreateEventState extends State<CreateEvent> {
               SizedBox(height: 16.h,),
               Row(
                 children: [
-                  Icon(Icons.date_range_outlined,color: ColorsManager.black1C,),
+                  Icon(Icons.date_range_outlined,),
                   SizedBox(width: 4.w,),
                   Text("Event Date",style: Theme.of(context).textTheme.titleMedium),
                   Spacer(),
@@ -76,7 +76,7 @@ class _CreateEventState extends State<CreateEvent> {
               SizedBox(height: 16.h,),
               Row(
                 children: [
-                  Icon(Icons.access_time,color: ColorsManager.black1C,),
+                  Icon(Icons.access_time,),
                   SizedBox(width: 4.w,),
                   Text("Event Time",style: Theme.of(context).textTheme.titleMedium),
                   Spacer(),

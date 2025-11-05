@@ -4,6 +4,7 @@ abstract class ColorsManager{
   static const Color black = Color(0xFF202020);
   static const Color black1C = Color(0xFF1C1C1C);
   static const Color white= Color(0xFFFFFFFF);
+  static const Color ofWhite= Color(0xFFF4EBDC);
   static const Color whiteBlue= Color(0xFFF2FEFF);
   static const Color blue= Color(0xFF5669FF);
   static const Color darkBlue= Color(0xFF101127);

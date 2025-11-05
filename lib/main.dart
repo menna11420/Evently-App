@@ -24,7 +24,7 @@ class EventlyApp extends StatelessWidget {
           initialRoute: AppRoutes.mainLayout,
           theme: ThemeManager.light,
           darkTheme: ThemeManager.dark,
-          //themeMode: ThemeMode.dark,
+          themeMode: ThemeMode.dark,
           locale: Locale("en"),
         ),
       );
