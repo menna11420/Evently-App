@@ -54,7 +54,7 @@ class _MainLayoutState extends State<MainLayout> {
             BottomNavigationBarItem(icon: Icon(selectedIndex == 0 ? Icons.home : Icons.home_outlined),label: "Home"),
             BottomNavigationBarItem(icon: Icon(selectedIndex == 1 ? Icons.location_on : Icons.location_on_outlined),label: "Map"),
             BottomNavigationBarItem(icon: Icon(selectedIndex == 2 ? Icons.favorite : Icons.favorite_border_outlined),label: "Favourite"),
-            BottomNavigationBarItem(icon: Icon(selectedIndex == 3 ? Icons.person : Icons.person_outline),label: "Person"),
+            BottomNavigationBarItem(icon: Icon(selectedIndex == 3 ? Icons.person : Icons.person_outline),label: "Profile"),
           ]
       ),
     );

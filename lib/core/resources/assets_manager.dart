@@ -10,6 +10,7 @@ abstract class ImagesAssets {
   static const String meeting = "${base}meeting.png";
   static const String sports = "${base}sports.png";
   static const String workshop = "${base}workshop.png";
+  static const String profilePhoto = "${base}profile_photo.png";
 }
 
 abstract class IconsAssets {

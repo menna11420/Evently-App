@@ -124,6 +124,12 @@ class ThemeManager {
           color: ColorsManager.black1C,
           fontSize: 16.sp,
           fontWeight: FontWeight.w500),
+
+      labelMedium: GoogleFonts.inter(
+        fontSize: 20.sp,
+        fontWeight: FontWeight.bold,
+        color: ColorsManager.black1C,
+      ),
     ),
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
