@@ -1,4 +1,3 @@
-import 'package:evently_app/core/resources/colors_manager.dart';
 import 'package:evently_app/core/widgets/custom_tab_item.dart';
 import 'package:evently_app/models/category_model.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +10,7 @@ class CustomTabBar extends StatefulWidget {
     required this.unSelectedBgColor,
     required this.selectedFgColor,
     required this.unSelectedFgColor,
+    this.onCategoryItemClicked
     });
 
   final List<CategoryModel> categories;
@@ -18,6 +18,7 @@ class CustomTabBar extends StatefulWidget {
   final Color unSelectedBgColor;
   final Color selectedFgColor;
   final Color unSelectedFgColor;
+  final void Function(CategoryModel category)? onCategoryItemClicked;
 
   @override
   State<CustomTabBar> createState() => _CustomTabBarState();
@@ -32,6 +33,7 @@ class _CustomTabBarState extends State<CustomTabBar> {
       child: TabBar(
           indicatorColor: Colors.transparent,
           onTap: (index){
+            widget.onCategoryItemClicked?.call(widget.categories[index]);
             setState(() {
               selectedIndex = index;
             });

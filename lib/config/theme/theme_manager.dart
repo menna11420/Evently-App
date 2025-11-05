@@ -7,6 +7,12 @@ class ThemeManager {
   static final ThemeData light = ThemeData(
     useMaterial3: false,
     primaryColor: ColorsManager.blue,
+    appBarTheme: AppBarThemeData(
+      backgroundColor: ColorsManager.whiteBlue,
+      foregroundColor: ColorsManager.blue,
+      titleTextStyle: GoogleFonts.roboto(fontSize: 18.sp,fontWeight: FontWeight.w400,color: ColorsManager.blue),
+        centerTitle: true,
+    ),
     cardTheme: CardThemeData(
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8.r)
@@ -68,6 +74,11 @@ class ThemeManager {
         fontSize: 16.sp,
         fontWeight: FontWeight.w500,
       ),
+      hintStyle: GoogleFonts.inter(
+      color: ColorsManager.gray,
+      fontSize: 16.sp,
+      fontWeight: FontWeight.w500,
+    ),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
@@ -108,6 +119,11 @@ class ThemeManager {
           color: ColorsManager.black1C,
           fontSize: 14.sp,
           fontWeight: FontWeight.bold),
+
+      titleMedium: GoogleFonts.inter(
+          color: ColorsManager.black1C,
+          fontSize: 16.sp,
+          fontWeight: FontWeight.w500),
     ),
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
