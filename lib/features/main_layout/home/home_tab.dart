@@ -1,13 +1,12 @@
-import 'package:evently_app/config/theme/theme_manager.dart';
 import 'package:evently_app/core/resources/colors_manager.dart';
 import 'package:evently_app/core/widgets/custom_event_item.dart';
 import 'package:evently_app/core/widgets/custom_tab_bar.dart';
-import 'package:evently_app/core/widgets/custom_tab_item.dart';
 import 'package:evently_app/models/category_model.dart';
 import 'package:evently_app/models/event_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
+
+import '../../../l10n/app_localizations.dart';
 
 class HomeTab extends StatefulWidget {
   const HomeTab({super.key});
@@ -20,6 +19,7 @@ class _HomeTabState extends State<HomeTab> {
   int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
+    AppLocalizations appLocalizations = AppLocalizations.of(context)!;
     return Column(
       children: [
         Container(
@@ -44,7 +44,7 @@ class _HomeTabState extends State<HomeTab> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Welcome Back ✨",
+                          "${appLocalizations.welcome_back} ✨",
                           style: Theme.of(context).textTheme.headlineSmall,
                         ),
                         Text(
@@ -88,7 +88,7 @@ class _HomeTabState extends State<HomeTab> {
                 ),
                 SizedBox(height: 12.h),
                 CustomTabBar(
-                  categories: CategoryModel.categoriesWithAll,
+                  categories: CategoryModel.getCategoriesWithAll(context),
                   selectedBgColor: ColorsManager.whiteBlue,
                   unSelectedBgColor: Colors.transparent,
                   selectedFgColor: ColorsManager.blue,
@@ -102,7 +102,7 @@ class _HomeTabState extends State<HomeTab> {
           padding: EdgeInsets.zero,
           itemBuilder: (context,index) => CustomEventItem(
             event: EventModel(
-                category: CategoryModel.categories[2],
+                category: CategoryModel.getCategories(context)[2],
                 title: "Meeting for Updating The Development Method",
                 description: "Meeting for Updating The Development Method",
                 dateTime: DateTime.now(),

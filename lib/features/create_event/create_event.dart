@@ -8,6 +8,8 @@ import 'package:evently_app/models/category_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../l10n/app_localizations.dart';
+
 class CreateEvent extends StatefulWidget {
   const CreateEvent({super.key});
 
@@ -16,12 +18,13 @@ class CreateEvent extends StatefulWidget {
 }
 
 class _CreateEventState extends State<CreateEvent> {
-  CategoryModel selectedCategory = CategoryModel.categories[0];
+  late CategoryModel selectedCategory = CategoryModel.getCategories(context)[0];
   @override
   Widget build(BuildContext context) {
+    AppLocalizations appLocalizations = AppLocalizations.of(context)!;
     return Scaffold(
       appBar: AppBar(
-        title: Text("Create Event"),
+        title: Text(appLocalizations.create_event),
       ),
       body: Padding(
         padding: REdgeInsets.all(8.0),
@@ -39,26 +42,26 @@ class _CreateEventState extends State<CreateEvent> {
                     selectedCategory = category;
                   });
                 },
-                  categories: CategoryModel.categories,
+                  categories: CategoryModel.getCategories(context),
                   selectedBgColor: ColorsManager.blue,
                   unSelectedBgColor: Colors.transparent,
                   selectedFgColor: ColorsManager.whiteBlue,
                   unSelectedFgColor: ColorsManager.blue
               ),
               SizedBox(height: 16.h,),
-              Text("Title",style: Theme.of(context).textTheme.titleMedium),
+              Text(appLocalizations.title,style: Theme.of(context).textTheme.titleMedium),
               SizedBox(height: 8.h,),
               CustomTextFormField(
-                hintText:"Event Title",
+                hintText:appLocalizations.event_title,
                 keyboardType: TextInputType.text,
                 prefixIcon: Icon(Icons.edit_note_sharp),
               ),
               SizedBox(height: 16.h,),
-              Text("Description",style: Theme.of(context).textTheme.titleMedium),
+              Text(appLocalizations.description,style: Theme.of(context).textTheme.titleMedium),
               SizedBox(height: 8.h,),
               CustomTextFormField(
                 maxLines: 4,
-                hintText:"Event Description",
+                hintText:appLocalizations.event_description,
                 keyboardType: TextInputType.text,
               ),
               SizedBox(height: 16.h,),
@@ -66,9 +69,9 @@ class _CreateEventState extends State<CreateEvent> {
                 children: [
                   Icon(Icons.date_range_outlined,),
                   SizedBox(width: 4.w,),
-                  Text("Event Date",style: Theme.of(context).textTheme.titleMedium),
+                  Text(appLocalizations.event_date,style: Theme.of(context).textTheme.titleMedium),
                   Spacer(),
-                  CustomTextButton(text: "Choose Date", onTap: (){
+                  CustomTextButton(text: appLocalizations.choose_date, onTap: (){
                     showDatePicker(context: context, firstDate: DateTime.now(), lastDate: DateTime.now().add(Duration(days: 365)));
                   })
                 ],
@@ -78,15 +81,15 @@ class _CreateEventState extends State<CreateEvent> {
                 children: [
                   Icon(Icons.access_time,),
                   SizedBox(width: 4.w,),
-                  Text("Event Time",style: Theme.of(context).textTheme.titleMedium),
+                  Text(appLocalizations.event_time,style: Theme.of(context).textTheme.titleMedium),
                   Spacer(),
-                  CustomTextButton(text: "Choose Time", onTap: (){
+                  CustomTextButton(text: appLocalizations.choose_time, onTap: (){
                     showTimePicker(context: context, initialTime: TimeOfDay.now());
                   })
                 ],
               ),
               SizedBox(height: 24.h,),
-              CustomElevatedButton(text: "Create Event", onPress: (){})
+              CustomElevatedButton(text: appLocalizations.create_event, onPress: (){})
             ],
           ),
         ),

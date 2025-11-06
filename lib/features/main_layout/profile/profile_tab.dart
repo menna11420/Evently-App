@@ -5,11 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../../l10n/app_localizations.dart';
+
 class ProfileTab extends StatelessWidget {
   const ProfileTab({super.key});
 
   @override
   Widget build(BuildContext context) {
+    AppLocalizations appLocalizations = AppLocalizations.of(context)!;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -56,9 +59,9 @@ class ProfileTab extends StatelessWidget {
           ),
         ),
         SizedBox(height: 16.h),
-        CustomDropDownItem(label: "Theme",selectedLabel: "Light",menuItems: ["Light","Dark"],),
+        CustomDropDownItem(label: appLocalizations.theme,selectedLabel: appLocalizations.light,menuItems: [appLocalizations.light,appLocalizations.dark],),
         SizedBox(height: 16.h),
-        CustomDropDownItem(label: "Language",selectedLabel: "English",menuItems: ["English","Arabic"],),
+        CustomDropDownItem(label: appLocalizations.language,selectedLabel: "English",menuItems: ["English","Arabic"],),
         Spacer(flex: 7,),
         Container(
           margin: REdgeInsets.symmetric(horizontal: 16),
@@ -78,7 +81,7 @@ class ProfileTab extends StatelessWidget {
             children: [
               Icon(Icons.logout),
               SizedBox(width: 8.w,),
-              Text("Logout",)
+              Text(appLocalizations.logout,)
             ],
           )),
         ),

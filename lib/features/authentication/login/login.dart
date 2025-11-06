@@ -4,6 +4,7 @@ import 'package:evently_app/core/resources/validators.dart';
 import 'package:evently_app/core/widgets/custom_elevated_button.dart';
 import 'package:evently_app/core/widgets/custom_text_button.dart';
 import 'package:evently_app/core/widgets/custom_text_form_field.dart';
+import 'package:evently_app/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -42,6 +43,7 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
+    AppLocalizations appLocalizations = AppLocalizations.of(context)!;
     return Scaffold(
       resizeToAvoidBottomInset: true,
       body: SingleChildScrollView(
@@ -63,7 +65,7 @@ class _LoginState extends State<Login> {
                     CustomTextFormField(
                       controller: _emailController,
                       validator: Validator.validateEmail,
-                      labelText: "Email",
+                      labelText: appLocalizations.email,
                       keyboardType: TextInputType.emailAddress,
                       prefixIcon: Icon(Icons.email),
                     ),
@@ -72,7 +74,7 @@ class _LoginState extends State<Login> {
                       controller: _passwordController,
                       validator: Validator.validatePassword,
                       isSecure: securePassword,
-                      labelText: "Password",
+                      labelText: appLocalizations.password,
                       keyboardType: TextInputType.visiblePassword,
                       prefixIcon: Icon(Icons.lock),
                       suffixIcon: IconButton(
@@ -84,22 +86,22 @@ class _LoginState extends State<Login> {
                     ),
                     SizedBox(height: 16.h),
                     CustomTextButton(
-                      text: "Forget Password?",
+                      text: "${appLocalizations.forget_password}?",
                       onTap: () {},
                       textAlign: TextAlign.right,
                     ),
                     SizedBox(height: 24.h),
-                    CustomElevatedButton(text: "Login", onPress: _login),
+                    CustomElevatedButton(text: appLocalizations.login, onPress: _login),
                     SizedBox(height: 24.h),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "Don’t Have Account ? ",
+                          "${appLocalizations.dont_have_account}? ",
                           style: Theme.of(context).textTheme.bodySmall,
                         ),
                         CustomTextButton(
-                          text: "Create Account",
+                          text: appLocalizations.create_account,
                           onTap: () {
                             Navigator.pushReplacementNamed(
                               context,
@@ -122,7 +124,7 @@ class _LoginState extends State<Login> {
                           ),
                         ),
                         Text(
-                          "Or",
+                          appLocalizations.or,
                           style: GoogleFonts.inter(
                             color: ColorsManager.blue,
                             fontSize: 16.sp,
@@ -147,7 +149,7 @@ class _LoginState extends State<Login> {
                         children: [
                           SvgPicture.asset("assets/images/google_icon.svg"),
                           SizedBox(width: 4.w,),
-                          Text("Login With Google",style: GoogleFonts.inter(color: ColorsManager.blue,fontSize: 20.sp,fontWeight: FontWeight.w500),),
+                          Text(appLocalizations.login_with_google,style: GoogleFonts.inter(color: ColorsManager.blue,fontSize: 20.sp,fontWeight: FontWeight.w500),),
                         ],
                       ),
                     ),

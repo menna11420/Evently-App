@@ -7,6 +7,8 @@ import 'package:evently_app/core/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../l10n/app_localizations.dart';
+
 class Register extends StatefulWidget {
   const Register({super.key});
 
@@ -45,6 +47,7 @@ class _RegisterState extends State<Register> {
 
   @override
   Widget build(BuildContext context) {
+    AppLocalizations appLocalizations = AppLocalizations.of(context)!;
     return Scaffold(
       resizeToAvoidBottomInset: true,
       body: Padding(
@@ -67,7 +70,7 @@ class _RegisterState extends State<Register> {
                     CustomTextFormField(
                       controller: _nameController,
                       validator: Validator.validateName,
-                      labelText: "Name",
+                      labelText: appLocalizations.name,
                       prefixIcon: Icon(Icons.person),
                       keyboardType: TextInputType.name,
                     ),
@@ -75,7 +78,7 @@ class _RegisterState extends State<Register> {
                     CustomTextFormField(
                       controller: _emailController,
                       validator: Validator.validateEmail,
-                      labelText: "Email",
+                      labelText: appLocalizations.email,
                       prefixIcon: Icon(Icons.mail),
                       keyboardType: TextInputType.emailAddress,
                     ),
@@ -83,7 +86,7 @@ class _RegisterState extends State<Register> {
                     CustomTextFormField(
                       controller: _passwordController,
                       validator: Validator.validatePassword,
-                      labelText: "Password",
+                      labelText: appLocalizations.password,
                       prefixIcon: Icon(Icons.lock),
                       keyboardType: TextInputType.visiblePassword,
                       suffixIcon: IconButton(
@@ -100,7 +103,7 @@ class _RegisterState extends State<Register> {
                     CustomTextFormField(
                       controller: _rePasswordController,
                       validator: Validator.validateRePassword,
-                      labelText: "Re Password",
+                      labelText: appLocalizations.re_password,
                       prefixIcon: Icon(Icons.lock),
                       keyboardType: TextInputType.visiblePassword,
                       suffixIcon: IconButton(
@@ -115,7 +118,7 @@ class _RegisterState extends State<Register> {
                     ),
                     SizedBox(height: 16.h),
                     CustomElevatedButton(
-                      text: "Create Account",
+                      text: appLocalizations.create_account,
                       onPress: _createAccount,
                     ),
                     SizedBox(height: 16.h),
@@ -123,11 +126,11 @@ class _RegisterState extends State<Register> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "Already Have Account ? ",
+                          "${appLocalizations.already_have_account}? ",
                           style: Theme.of(context).textTheme.bodySmall,
                         ),
                         CustomTextButton(
-                          text: "Login",
+                          text: appLocalizations.login,
                           onTap: () {
                             Navigator.pushReplacementNamed(
                               context,
