@@ -11,10 +11,13 @@ class CustomDropDownItem extends StatelessWidget {
     required this.label,
     required this.selectedLabel,
     required this.menuItems,
+    this.onChange
+
   });
   final String label;
   final String selectedLabel;
   final List<String> menuItems;
+  final void Function(String?)? onChange;
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +59,7 @@ class CustomDropDownItem extends StatelessWidget {
                         DropdownMenuItem(value: item, child: Text(item,style: GoogleFonts.inter(color: ColorsManager.black1C,fontSize: 14.sp,fontWeight: FontWeight.w400),)),
                   )
                       .toList(),
-                  onChanged: (_) {},
+                  onChanged: onChange,
                 ),
               ],
             ),

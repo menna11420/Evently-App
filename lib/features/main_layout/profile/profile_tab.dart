@@ -1,9 +1,11 @@
 import 'package:evently_app/core/resources/assets_manager.dart';
 import 'package:evently_app/core/resources/colors_manager.dart';
 import 'package:evently_app/core/widgets/custom_drop_down_item.dart';
+import 'package:evently_app/providers/config_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 import '../../../l10n/app_localizations.dart';
 
@@ -13,6 +15,7 @@ class ProfileTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     AppLocalizations appLocalizations = AppLocalizations.of(context)!;
+    var configProvider = Provider.of<ConfigProvider>(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -59,16 +62,32 @@ class ProfileTab extends StatelessWidget {
           ),
         ),
         SizedBox(height: 16.h),
-        CustomDropDownItem(label: appLocalizations.theme,selectedLabel: appLocalizations.light,menuItems: [appLocalizations.light,appLocalizations.dark],),
+        CustomDropDownItem(
+          label: appLocalizations.theme,
+          selectedLabel: configProvider.isDark ? appLocalizations.dark : appLocalizations.light,
+          menuItems: [appLocalizations.light, appLocalizations.dark],
+          onChange: (newTheme) {
+            configProvider.changeAppTheme(
+              newTheme == appLocalizations.light ? ThemeMode.light : ThemeMode.dark,
+            );
+          },
+        ),
         SizedBox(height: 16.h),
-        CustomDropDownItem(label: appLocalizations.language,selectedLabel: "English",menuItems: ["English","Arabic"],),
-        Spacer(flex: 7,),
+        CustomDropDownItem(
+          onChange: (newLanguage){
+            configProvider.changeAppLanguage(newLanguage == "English" ? "en" : "ar");
+          },
+          label: appLocalizations.language,
+          selectedLabel: configProvider.isEnglish ? "English" : "Arabic",
+          menuItems: ["English", "Arabic"],
+        ),
+        Spacer(flex: 7),
         Container(
           margin: REdgeInsets.symmetric(horizontal: 16),
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
               padding: REdgeInsets.all(16),
-                backgroundColor: ColorsManager.red,
+              backgroundColor: ColorsManager.red,
               foregroundColor: ColorsManager.white,
               textStyle: GoogleFonts.inter(
                 fontSize: 20.sp,
@@ -76,16 +95,17 @@ class ProfileTab extends StatelessWidget {
                 color: ColorsManager.white,
               ),
             ),
-              onPressed: (){},
-              child: Row(
-            children: [
-              Icon(Icons.logout),
-              SizedBox(width: 8.w,),
-              Text(appLocalizations.logout,)
-            ],
-          )),
+            onPressed: () {},
+            child: Row(
+              children: [
+                Icon(Icons.logout),
+                SizedBox(width: 8.w),
+                Text(appLocalizations.logout),
+              ],
+            ),
+          ),
         ),
-        Spacer(flex: 3,)
+        Spacer(flex: 3),
       ],
     );
   }
