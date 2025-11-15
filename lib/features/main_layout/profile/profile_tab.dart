@@ -1,6 +1,7 @@
 import 'package:evently_app/core/resources/assets_manager.dart';
 import 'package:evently_app/core/resources/colors_manager.dart';
 import 'package:evently_app/core/widgets/custom_drop_down_item.dart';
+import 'package:evently_app/multi_providers/theme_provider.dart';
 import 'package:evently_app/providers/config_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,6 +9,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import '../../../l10n/app_localizations.dart';
+import '../../../multi_providers/language_provider.dart';
 
 class ProfileTab extends StatelessWidget {
   const ProfileTab({super.key});
@@ -15,7 +17,8 @@ class ProfileTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     AppLocalizations appLocalizations = AppLocalizations.of(context)!;
-    var configProvider = Provider.of<ConfigProvider>(context);
+    var themeProvider = Provider.of<ThemeProvider>(context);
+    var languageProvider = Provider.of<LanguageProvider>(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -64,10 +67,10 @@ class ProfileTab extends StatelessWidget {
         SizedBox(height: 16.h),
         CustomDropDownItem(
           label: appLocalizations.theme,
-          selectedLabel: configProvider.isDark ? appLocalizations.dark : appLocalizations.light,
+          selectedLabel: themeProvider.isDark ? appLocalizations.dark : appLocalizations.light,
           menuItems: [appLocalizations.light, appLocalizations.dark],
           onChange: (newTheme) {
-            configProvider.changeAppTheme(
+            themeProvider.changeAppTheme(
               newTheme == appLocalizations.light ? ThemeMode.light : ThemeMode.dark,
             );
           },
@@ -75,10 +78,10 @@ class ProfileTab extends StatelessWidget {
         SizedBox(height: 16.h),
         CustomDropDownItem(
           onChange: (newLanguage){
-            configProvider.changeAppLanguage(newLanguage == "English" ? "en" : "ar");
+            languageProvider.changeAppLanguage(newLanguage == "English" ? "en" : "ar");
           },
           label: appLocalizations.language,
-          selectedLabel: configProvider.isEnglish ? "English" : "Arabic",
+          selectedLabel: languageProvider.isEnglish ? "English" : "Arabic",
           menuItems: ["English", "Arabic"],
         ),
         Spacer(flex: 7),

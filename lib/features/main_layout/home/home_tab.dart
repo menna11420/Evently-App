@@ -3,12 +3,12 @@ import 'package:evently_app/core/widgets/custom_event_item.dart';
 import 'package:evently_app/core/widgets/custom_tab_bar.dart';
 import 'package:evently_app/models/category_model.dart';
 import 'package:evently_app/models/event_model.dart';
+import 'package:evently_app/multi_providers/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-
 import '../../../l10n/app_localizations.dart';
-import '../../../providers/config_provider.dart';
+import '../../../multi_providers/language_provider.dart';
 
 class HomeTab extends StatefulWidget {
   const HomeTab({super.key});
@@ -22,7 +22,8 @@ class _HomeTabState extends State<HomeTab> {
   @override
   Widget build(BuildContext context) {
     AppLocalizations appLocalizations = AppLocalizations.of(context)!;
-    var configProvider = Provider.of<ConfigProvider>(context);
+    var themeProvider = Provider.of<ThemeProvider>(context);
+    var languageProvider = Provider.of<LanguageProvider>(context);
     return Column(
       children: [
         Container(
@@ -71,21 +72,21 @@ class _HomeTabState extends State<HomeTab> {
                     Spacer(),
                     IconButton(
                       onPressed: (){
-                        configProvider.changeAppTheme(configProvider.isDark ? ThemeMode.light : ThemeMode.dark);
+                        themeProvider.changeAppTheme(themeProvider.isDark ? ThemeMode.light : ThemeMode.dark);
                       },
-                        icon: Icon(configProvider.isDark ? Icons.dark_mode : Icons.sunny),
+                        icon: Icon(themeProvider.isDark ? Icons.dark_mode : Icons.sunny),
                         color: ColorsManager.white
                     ),
                     SizedBox(width: 10.w),
                     InkWell(
                       onTap: (){
-                        configProvider.changeAppLanguage(configProvider.isEnglish ? "ar" : "en");
+                        languageProvider.changeAppLanguage(languageProvider.isEnglish ? "ar" : "en");
                       },
                       child: Card(
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
-                            configProvider.isEnglish ? "EN" : "ar",
+                            languageProvider.isEnglish ? "EN" : "ar",
                             style: Theme.of(context).textTheme.headlineMedium,
                           ),
                         ),
